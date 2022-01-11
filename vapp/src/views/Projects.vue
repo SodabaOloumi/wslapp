@@ -16,10 +16,21 @@
       <p class="card-text">His/Her Doctor Address :   {{this.project[1]}}</p>
       <p class="card-text">His/Her patient Address :  {{this.project[2]}}</p>
       <p class="card-text">Chief Complient :  {{this.project[3]}}</p>
+      <p>{{this.project[4]}}</p>
       <router-link to="/ProjectEdit"></router-link>
       
     
   </div>
+    <!-- <form @click="deleteProject()" >
+            <div>
+              <label>Customer Address:</label>
+              <input type="text" v-model="customerAddress" id="customerAddress" required placeholder="Enter your Address.. ">
+              
+            </div>
+         
+         
+      </form>  -->
+       <button type="submit" class="btn btn-dark" @click="deleteProject()"  >delete</button>
   </div>
   </div>
 </template>
@@ -52,8 +63,14 @@ export default {
     this.project = await App.App.getProject(p.customerAddress);
     console.log(this.project);
     this.customerAddress=null
-  }
   },
-  
-};
+    async deleteProject() {
+        let p = "0xE017b76Ed73e93eab505b55c2A4B07B7A2B56cB5";
+     
+    this.project = await App.App.deleteProject(p);
+    console.log(this.project , "....................");
+    
+  },
+  } 
+}
 </script>

@@ -39,10 +39,10 @@ const App = {
       from: this.account
     });
   },
-  addProject: async function(Name, skills,information, averageOfprice) {
+  addProject: async function(Name, skills,information, averageOfprice , id) {
     
     const { addProject } = this.meta.methods;
-    await addProject( Name, skills,information, averageOfprice).send({
+    await addProject( Name, skills,information, averageOfprice , id).send({
       from: this.account,
       value: this.web3.utils.toWei("1", "ether")
     });
@@ -59,12 +59,12 @@ const App = {
     let p= await getProject(_customerAddress ).call();
     return p;
   },
-  // revorkPermission: async function revorkPermission( _patientAddress, _viewner, _recordName  ) {
-  //   const { revorkPermission } = this.meta.methods;
-  //   await revorkPermission(_patientAddress, _viewner, _recordName ).send({
-  //     from: this.account
-  //   });
-
+  deleteProject: async function deleteProject( _customerAddress ) {
+    const { deleteProject } = this.meta.methods;
+    await deleteProject(_customerAddress).send({
+      from: this.account
+    });
+  }
   
  
 };

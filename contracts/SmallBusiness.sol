@@ -51,6 +51,7 @@ contract SmallBusiness is InterfaceOfCuntract{
         string skills;
         string information;
         uint averageOfprice;
+        uint id;
      
     }
 
@@ -193,7 +194,7 @@ contract SmallBusiness is InterfaceOfCuntract{
     
     function addProject(string memory Name,
     string memory skills,string memory information
-    ,uint averageOfprice ) 
+    ,uint averageOfprice , uint _id) 
     public override payable 
     verifyCaller(msg.sender) 
     returns(bool){
@@ -207,7 +208,8 @@ contract SmallBusiness is InterfaceOfCuntract{
             skills:skills,
             information:information,
             averageOfprice:averageOfprice,
-            state:State.forSell
+            state:State.forSell,
+            id: _id
            
              });
         deal = deal + 1;
@@ -241,8 +243,7 @@ contract SmallBusiness is InterfaceOfCuntract{
         return true;
     }
 
-    function EditProject(string memory _name,
-        string memory _skills,
+    function EditProject(string memory _name,string memory _skills,
         string memory _information,uint _averageOfprice )
         public override
         verifyCaller(msg.sender)
@@ -257,6 +258,7 @@ contract SmallBusiness is InterfaceOfCuntract{
            p.skills= _skills;
            p.information = _information;
            p. averageOfprice = _averageOfprice;
+           p.id = p.id;
           
              
         
@@ -268,15 +270,15 @@ contract SmallBusiness is InterfaceOfCuntract{
     verifyCaller(msg.sender) 
     forSell(_customerAddress)
     returns (string memory Name,string memory skills,
-    string memory information,uint averageOfprice )   
+    string memory information,uint averageOfprice , uint id )   
     {
         Project storage p = projects[_customerAddress];
-        return (p.Name,p.skills,p.information,p.averageOfprice  ); 
+        return (p.Name,p.skills,p.information,p.averageOfprice  , p.id ); 
     }
     
 
     //can delete the project with the id of project
-    function deleteProject(address _customerAddress) 
+   function deleteProject(address _customerAddress) 
     public override 
     isCustomer(msg.sender) 
     returns(string memory){
@@ -290,6 +292,7 @@ contract SmallBusiness is InterfaceOfCuntract{
         
         return "the project was delete";
 
+    
     }
 
 

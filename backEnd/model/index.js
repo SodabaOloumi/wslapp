@@ -1,27 +1,29 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
 
-const projects = new Schema(
+
+const projectSchema= mongoose.Schema(
   {
+    id:{
+     type:Number
+    },
     Name: {
-      type: String,
-      required: 'Name cannot be blank'
+      type: String
+      
     },
     skills: {
-      type: String,
-      required: 'skills  cannot be blank'
+      type: String
     },
     information: {
-      type: String,
-      required: 'information  cannot be blank'
+      type: String
     },
     averageOfprice: {
-      type: Number,
-      required: 'task2  cannot be blank'
+      type: Number
     }
-  },
-  { collection: 'task' }
-);
+  
+ 
+})
 
-module.exports = mongoose.model('project', projects);
+
+const Project= mongoose.model("project",projectSchema);
+module.exports = Project;

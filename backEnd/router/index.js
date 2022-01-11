@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminControler = require('../controller/index');
 
-router.get('/getProject',adminControler.postProject);
+router.get('/postProject',adminControler.addProject);
 router.post('/project',adminControler.Projects);
 
 
