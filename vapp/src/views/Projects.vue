@@ -30,7 +30,7 @@
          
          
       </form>  -->
-       <button type="submit" class="btn btn-dark" @click="deleteProject()"  >delete</button>
+       <router-link to="/chooseProject" class="btn btn-dark" >Choose Project</router-link>
   </div>
   </div>
 </template>
@@ -64,13 +64,7 @@ export default {
     console.log(this.project);
     this.customerAddress=null
   },
-    async deleteProject() {
-        let p = "0xE017b76Ed73e93eab505b55c2A4B07B7A2B56cB5";
-     
-    this.project = await App.App.deleteProject(p);
-    console.log(this.project , "....................");
     
-  },
   } 
 }
 </script>

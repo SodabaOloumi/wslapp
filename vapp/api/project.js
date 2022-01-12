@@ -6,5 +6,8 @@ const axiosClient = axios.create({
 export default {
     addProject(id ,Name, skills,information, averageOfprice){
         return axiosClient.post("/postProject" ,id, Name, skills,information, averageOfprice );
+    },
+    addEnginer(customerAddress , day,price,information){
+        return axiosClient.post("/enginer", customerAddress , day,price,information)
     }
 }

@@ -47,9 +47,9 @@ const App = {
       value: this.web3.utils.toWei("1", "ether")
     });
   },
-  EditProject: async function EditProject(Name, skills,information, averageOfprice) {
+  EditProject: async function EditProject(Name, skills,information, averageOfprice ,id) {
     const { EditProject } = this.meta.methods;
-    await EditProject(Name, skills,information, averageOfprice).send({
+    await EditProject(Name, skills,information, averageOfprice ,id).send({
       from: this.account
     });
    
@@ -59,12 +59,38 @@ const App = {
     let p= await getProject(_customerAddress ).call();
     return p;
   },
-  deleteProject: async function deleteProject( _customerAddress ) {
-    const { deleteProject } = this.meta.methods;
-    await deleteProject(_customerAddress).send({
+  
+  chooseToWork: async function chooseToWork( _customerAddress ,day,  price ,information  ) {
+    const { chooseToWork } = this.meta.methods;
+    await chooseToWork(_customerAddress ,day,  price ,information  ).send({
       from: this.account
     });
-  }
+  },
+  accepteCustomer: async function accepteCustomer( _engineerAddress  ) {
+    const { accepteCustomer } = this.meta.methods;
+    await accepteCustomer(_engineerAddress).send({
+      from: this.account
+    });
+    
+  },
+  halfPayment : async function halfPayment( _engineerAddress  ) {
+    const { halfPayment } = this.meta.methods;
+    await halfPayment(_engineerAddress).send({
+      from: this.account
+    }); 
+  },
+  finishTheProject: async function finishTheProject( _engineerAddress  ) {
+    const { finishTheProject } = this.meta.methods;
+    await finishTheProject(_engineerAddress).send({
+      from: this.account
+    }); 
+  },
+  _passthevalue: async function _passthevalue(  ) {
+    const { _passthevalue } = this.meta.methods;
+    await _passthevalue().send({
+      from: this.account
+    }); 
+  },
   
  
 };

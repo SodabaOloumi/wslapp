@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 var Project=require('../model/index');
+var Enginer = require("../model/enginer")
 
 exports.addProject= (req,res)=>{
     const id = req.body.id;
@@ -21,6 +22,26 @@ exports.addProject= (req,res)=>{
      console.log('books created',id, Name , skills , information , averageOfprice);
     
   },
+  
+exports.addEnginer= (req,res)=>{
+  const customerAddress = req.body.customerAddress;
+  const day= req.body.day;
+  const price=req.body.price;
+  const information= req.body.information;
+  
+  
+   const enginer= new Enginer({
+    customerAddress : customerAddress, 
+    day:day,
+    price:price,
+    information:information,
+    
+    
+   })
+   
+   enginer.save() ;
+ 
+},
   exports.Projects=(req,res)=>{
     Project.find()
 
